@@ -37,7 +37,7 @@ if __name__ == '__main__':
             [[[125, 126, 127, 128], [129, 130, 131, 132]],
              [[141, 142, 143, 144], [145, 146, 147, 148]]]]
 
-    print(add_matrices(mat1, mat2))
-    print(add_matrices(mat3, mat4))
-    print(add_matrices(mat5, mat6))
-    print(add_matrices(mat5, mat7))
+    print(add_matrices(mat1, mat2))  # Expected Output: [5, 7, 9]
+    print(add_matrices(mat3, mat4))  # Expected Output: [[6, 8], [10, 12]]
+    print(add_matrices(mat5, mat6))  # Expected Output: Nested matrix sum
+    print(add_matrices(mat5, mat7))  # Expected Output: None (shape mismatch)

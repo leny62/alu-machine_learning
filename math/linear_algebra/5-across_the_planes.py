@@ -9,9 +9,10 @@ def add_matrices2D(mat1, mat2):
         return None
     return [[row1[i] + row2[i] for i in range(len(row1))] for row1, row2 in zip(mat1, mat2)]
 
+# Example Usage:
 if __name__ == '__main__':
     mat1 = [[1, 2], [3, 4]]
     mat2 = [[5, 6], [7, 8]]
 
-    print(add_matrices2D(mat1, mat2))
-    print(add_matrices2D(mat1, [[1, 2, 3], [4, 5, 6]]))
+    print(add_matrices2D(mat1, mat2))  # Expected Output: [[6, 8], [10, 12]]
+    print(add_matrices2D(mat1, [[1, 2, 3], [4, 5, 6]]))  # Expected Output: None
