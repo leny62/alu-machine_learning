@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+"""
+Function to add arrays.
+"""
+
+
+import numpy as np
+
 """
 Function to add two arrays element-wise.
 """
@@ -9,10 +17,13 @@ def add_arrays(arr1, arr2):
         return None
     return [a + b for a, b in zip(arr1, arr2)]
 
-# Example Usage:
+    # Example Usage:
 if __name__ == '__main__':
     arr1 = [1, 2, 3, 4]
     arr2 = [5, 6, 7, 8]
 
     print(add_arrays(arr1, arr2))  # Expected Output: [6, 8, 10, 12]
     print(add_arrays(arr1, [1, 2, 3]))  # Expected Output: None
+
+if __name__ == "__main__":
+    add_arrays()

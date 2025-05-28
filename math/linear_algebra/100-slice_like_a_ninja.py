@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+"""
+Function to np slice.
+"""
+
+
 """
 Function to slice a NumPy matrix along specific axes.
 """
@@ -12,12 +18,15 @@ def np_slice(matrix, axes={}):
         slices[axis] = slice(*slice_params)  # Apply slicing parameters
     return matrix[tuple(slices)]  # Perform slicing
 
-# Example Usage:
+    # Example Usage:
 if __name__ == '__main__':
     mat1 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
     mat2 = np.array([[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]],
-                     [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]],
-                     [[21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]])
+    [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]],
+    [[21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]])
 
     print(np_slice(mat1, axes={1: (1, 3)}))  # Expected Output: [[2 3] [7 8]]
     print(np_slice(mat2, axes={0: (2,), 2: (None, None, -2)}))  # Expected Output: [[[5 3 1] [10 8 6]] [[15 13 11] [20 18 16]]]
+
+if __name__ == "__main__":
+    np_slice()
