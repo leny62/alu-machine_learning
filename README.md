@@ -62,7 +62,7 @@ python3 math/plotting/0-line.py
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2024 [leny62](https://www.lenycodes.tech/)
+Copyright (c) 2025 [leny62](https://www.lenycodes.tech/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
