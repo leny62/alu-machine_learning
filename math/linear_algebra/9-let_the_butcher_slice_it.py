@@ -1,19 +1,10 @@
 #!/usr/bin/env python3
-
-"""
-Function to func 9 let the butcher slice it.
-"""
-
-
 import numpy as np
-matrix = np.array([[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12], [13, 14, 15, 16, 17, 18], [19, 20, 21, 22, 23, 24]])
-mat1 = matrix[1:3]  # Extracts middle two rows
-mat2 = matrix[:, 2:4]  # Extracts middle two columns
-mat3 = matrix[-3:, -3:]  # Extracts bottom-right 3x3 submatrix
-
+matrix = np.array([[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12],
+                   [13, 14, 15, 16, 17, 18], [19, 20, 21, 22, 23, 24]])
+mat1 = matrix[1:3, :]
+mat2 = matrix[:, 2:4]
+mat3 = matrix[1:, 3:]
 print("The middle two rows of the matrix are:\n{}".format(mat1))
 print("The middle two columns of the matrix are:\n{}".format(mat2))
 print("The bottom-right, square, 3x3 matrix is:\n{}".format(mat3))
-
-if __name__ == "__main__":
-    func_9_let_the_butcher_slice_it()

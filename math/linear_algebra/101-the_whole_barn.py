@@ -1,54 +1,34 @@
 #!/usr/bin/env python3
+'''
+This is a simple script that demonstrates the use
+of the numpy library to solve a system of linear equations. | Python | Shobi
+'''
 
-"""
-Function to add matrices.
-"""
-
-
-import numpy as np
-
-"""
-Function to recursively add two matrices element-wise.
-"""
 
 def add_matrices(mat1, mat2):
-    """ Returns the element-wise sum of two matrices, or None if shapes mismatch. """
-    if type(mat1) != type(mat2) or len(mat1) != len(mat2):
+    '''
+    Adds two matrices together.
+    '''
+    if type(mat1) != type(mat2):
         return None
-    if isinstance(mat1, list):
-        return [add_matrices(m1, m2) for m1, m2 in zip(mat1, mat2)]
-    return mat1 + mat2
 
-    # Example Usage:
-if __name__ == '__main__':
-    mat1 = [1, 2, 3]
-    mat2 = [4, 5, 6]
-    mat3 = [[1, 2], [3, 4]]
-    mat4 = [[5, 6], [7, 8]]
+    if isinstance(mat1, (int, float)):
+        return mat1 + mat2
 
-    mat5 = [[[[1, 2, 3, 4], [5, 6, 7, 8]],
-    [[9, 10, 11, 12], [13, 14, 15, 16]],
-    [[17, 18, 19, 20], [21, 22, 23, 24]]],
-    [[[25, 26, 27, 28], [29, 30, 31, 32]],
-    [[33, 34, 35, 36], [37, 38, 39, 40]],
-    [[41, 42, 43, 44], [45, 46, 47, 48]]]]
+    if len(mat1) != len(mat2):
+        return None
 
-    mat6 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
-    [[19, 110, 111, 112], [113, 114, 115, 116]],
-    [[117, 118, 119, 120], [121, 122, 123, 124]]],
-    [[[125, 126, 127, 128], [129, 130, 131, 132]],
-    [[133, 134, 135, 136], [137, 138, 139, 140]],
-    [[141, 142, 143, 144], [145, 146, 147, 148]]]]
+    result = []
 
-    mat7 = [[[[11, 12, 13, 14], [15, 16, 17, 18]],
-    [[117, 118, 119, 120], [121, 122, 123, 124]]],
-    [[[125, 126, 127, 128], [129, 130, 131, 132]],
-    [[141, 142, 143, 144], [145, 146, 147, 148]]]]
+    for i in range(len(mat1)):
+        if isinstance(mat1[i], list):
+            sub_result = add_matrices(mat1[i], mat2[i])
+            if sub_result is None:
+                return None
+            result.append(sub_result)
+        elif isinstance(mat1[i], (int, float)):
+            result.append(mat1[i] + mat2[i])
+        else:
+            return None
 
-    print(add_matrices(mat1, mat2))  # Expected Output: [5, 7, 9]
-    print(add_matrices(mat3, mat4))  # Expected Output: [[6, 8], [10, 12]]
-    print(add_matrices(mat5, mat6))  # Expected Output: Nested matrix sum
-    print(add_matrices(mat5, mat7))  # Expected Output: None (shape mismatch)
-
-if __name__ == "__main__":
-    add_matrices()
+    return result

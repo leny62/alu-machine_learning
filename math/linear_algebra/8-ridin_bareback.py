@@ -1,33 +1,24 @@
 #!/usr/bin/env python3
+'''
+Module that multiplies two matrices
+'''
 
-"""
-Function to mat mul.
-"""
-
-
-import numpy as np
-
-"""
-Function to perform matrix multiplication.
-"""
 
 def mat_mul(mat1, mat2):
-    """ Returns the matrix multiplication of mat1 and mat2, or None if they cannot be multiplied. """
-    if len(mat1[0]) != len(mat2):  # Check if matrices can be multiplied
+    '''
+    Multiplies two matrices and returns the result matrix
+    '''
+    r1, c1 = len(mat1), len(mat1[0])
+    r2, c2 = len(mat2), len(mat2[0])
+
+    if c1 != r2:
         return None
 
-    # Compute matrix multiplication using list comprehension
-    return [[sum(a * b for a, b in zip(row, col)) for col in zip(*mat2)] for row in mat1]
+    result_matrix = [[0 for _ in range(c2)] for _ in range(r1)]
 
-    # Example Usage:
-if __name__ == '__main__':
-    mat1 = [[1, 2],
-    [3, 4],
-    [5, 6]]
-    mat2 = [[1, 2, 3, 4],
-    [5, 6, 7, 8]]
+    for i in range(r1):
+        for j in range(c2):
+            for k in range(c1):
+                result_matrix[i][j] += mat1[i][k] * mat2[k][j]
 
-    print(mat_mul(mat1, mat2))  # Expected Output: [[11, 14, 17, 20], [23, 30, 37, 44], [35, 46, 57, 68]]
-
-if __name__ == "__main__":
-    mat_mul()
+    return result_matrix

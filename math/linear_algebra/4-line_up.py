@@ -1,29 +1,19 @@
 #!/usr/bin/env python3
+'''
+Module that adds two arrays
+'''
 
-"""
-Function to add arrays.
-"""
-
-
-import numpy as np
-
-"""
-Function to add two arrays element-wise.
-"""
 
 def add_arrays(arr1, arr2):
-    """ Returns the element-wise sum of two arrays, or None if shapes mismatch. """
-    if len(arr1) != len(arr2):
-        return None
-    return [a + b for a, b in zip(arr1, arr2)]
+    '''
+    Returns a new array that adds two other arrays together
+    '''
+    n1 = len(arr1)
+    n2 = len(arr2)
+    result = []
 
-    # Example Usage:
-if __name__ == '__main__':
-    arr1 = [1, 2, 3, 4]
-    arr2 = [5, 6, 7, 8]
-
-    print(add_arrays(arr1, arr2))  # Expected Output: [6, 8, 10, 12]
-    print(add_arrays(arr1, [1, 2, 3]))  # Expected Output: None
-
-if __name__ == "__main__":
-    add_arrays()
+    if n1 == n2:
+        for i in range(n1):
+            result.append(arr1[i] + arr2[i])
+        return result
+    return None

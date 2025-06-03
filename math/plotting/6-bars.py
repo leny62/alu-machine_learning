@@ -2,29 +2,33 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Generate random fruit data
 np.random.seed(5)
-fruit = np.random.randint(0, 20, (4,3))
+fruit = np.random.randint(0, 20, (4, 3))
 
-# Define labels for people and fruit
 people = ['Farrah', 'Fred', 'Felicia']
-fruit_labels = ['apples', 'bananas', 'oranges', 'peaches']
-colors = ['red', 'yellow', '#ff8000', '#ffe5b4']
+fruit_names = {
+    'apples': 'red',
+    'bananas': 'yellow',
+    'oranges': '#ff8000',
+    'peaches': '#ffe5b4'
+}
 
-# Create the figure and axis
-fig, ax = plt.subplots()
-
-# Plot stacked bars for each person
-bottom = np.zeros(3)  # Start the stacking from zero
-for i in range(len(fruit)):
-    ax.bar(people, fruit[i], bottom=bottom, color=colors[i], width=0.5, label=fruit_labels[i])
-    bottom += fruit[i]  # Update stacking position
-
-# Set labels, title, and legend
-ax.set_ylabel("Quantity of Fruit")
-ax.set_ylim(0, 80)
-ax.set_yticks(np.arange(0, 81, 10))
-ax.set_title("Number of Fruit per Person")
-ax.legend()
-
+i = 0
+for name, color in sorted(fruit_names.items()):
+    bottom = 0
+    for j in range(i):
+        bottom += fruit[j]
+    plt.bar(
+        np.arange(len(people)),
+        fruit[i],
+        width=0.5,
+        bottom=bottom,
+        color=color,
+        label=name)
+    i += 1
+plt.xticks(np.arange(len(people)), people)
+plt.yticks(np.arange(0, 81, 10))
+plt.ylabel('Quantity of Fruit')
+plt.title("Number of Fruit per Person")
+plt.legend()
 plt.show()

@@ -1,29 +1,24 @@
 #!/usr/bin/env python3
+'''
+Defines a function that adds two two-dimensional arrays
+'''
 
-"""
-Function to add matrices2D.
-"""
-
-
-import numpy as np
-
-"""
-Function to add two 2D matrices element-wise.
-"""
 
 def add_matrices2D(mat1, mat2):
-    """ Returns the element-wise sum of two matrices, or None if shapes mismatch. """
-    if len(mat1) != len(mat2) or any(len(row1) != len(row2) for row1, row2 in zip(mat1, mat2)):
-        return None
-    return [[row1[i] + row2[i] for i in range(len(row1))] for row1, row2 in zip(mat1, mat2)]
+    '''
+    Returns a new array that adds two other two-dimesional arrays
+    '''
+    r1 = len(mat1)
+    c1 = len(mat1[0])
+    r2 = len(mat2)
+    c2 = len(mat2[0])
 
-    # Example Usage:
-if __name__ == '__main__':
-    mat1 = [[1, 2], [3, 4]]
-    mat2 = [[5, 6], [7, 8]]
+    if r1 == r2 and c1 == c2:
+        matrix = [[None for _ in range(c1)] for _ in range(r1)]
+        for r in range(r1):
+            for c in range(c1):
+                matrix[r][c] = mat1[r][c] + mat2[r][c]
 
-    print(add_matrices2D(mat1, mat2))  # Expected Output: [[6, 8], [10, 12]]
-    print(add_matrices2D(mat1, [[1, 2, 3], [4, 5, 6]]))  # Expected Output: None
+        return matrix
 
-if __name__ == "__main__":
-    add_matrices2D()
+    return None
